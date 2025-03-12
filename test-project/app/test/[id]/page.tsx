@@ -15,13 +15,26 @@ async function getRepository(): Promise<Repository> {
 }
 
 async function getTime(): Promise<Time> {
-    return httpGet<Time>('https://timeapi.io/api/time/current/zone?timeZone=Europe%2FChisinau');
+    return httpGet<Time>('https://timeapi.io/api/time/current/zone?timeZone=Europe/Chisinau');
 }
 
-async function httpGet<TResponse>(url: string): Promise<TResponse> {
-    const response = await fetch(url);
-    const responseJson: TResponse = await response.json();
-    return responseJson;
+//with await
+// async function httpGet<TResponse>(url: string): Promise<TResponse> {
+//     const response = await fetch(url);
+//     const responseJson: TResponse = await response.json();
+//     return responseJson;
+// }
+
+//without await
+function httpGet<TResponse>(url: string): Promise<TResponse> {
+    const response = fetch(url)
+        .then(response => response.json() as TResponse)
+        .catch(e => {
+            console.log(e);
+            return {} as TResponse;
+        });
+
+    return response;
 }
 
 export default async function Page({ params, searchParams }:

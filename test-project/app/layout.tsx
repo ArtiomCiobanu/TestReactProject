@@ -22,10 +22,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe%2FChisinau');
-  //const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe%2FChisinau', { cache: "no-store" ); //bypass caching
-  //const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe%2FChisinau', { next: { revalidate: 5 } }); //revalidate cache every 5 seconds
-  const time: { dateTime: string } = await response.json();
+  //const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe/Chisinau');
+  //const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe/Chisinau', { cache: "no-store" ); //bypass caching
+  //const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe/Chisinau', { next: { revalidate: 5 } }); //revalidate cache every 5 seconds
+  //const time: { dateTime: string } = await response.json();
 
   return (
     <html lang="en">
@@ -38,7 +38,7 @@ export default async function RootLayout({
 
         <div className="pt-12 pb-12">
           <div className="pt-2 pb-2">
-            Current time: {time.dateTime}
+            {/* Current time: {time.dateTime} */}
           </div>
           {children}
         </div>
