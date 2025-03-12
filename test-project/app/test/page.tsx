@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-const a = [42, "strings"] as const;
-const b = [42, "strings"];
+// const a = [42, "strings"] as const;
+// const b = [42, "strings"];
 
 function useMyState() {
     const [count, setCount] = useState(0);
@@ -23,7 +23,7 @@ function useMyState() {
     } as const
 }
 
-function Page() {
+export default function Page() {
     const {
         count: [count, setCount],
         speed: [speed, setSpeed],
@@ -78,7 +78,3 @@ function Page() {
         </div>
     );
 }
-
-
-
-export default Page;
